@@ -1,0 +1,12 @@
+<component name="CopyrightManager">
+  <settings>
+    <module2copyright>
+      <element module="Project Files" copyright="OpenSource" />
+    </module2copyright>
+    <LanguageOptions name="Go">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankBefore" value="true" />
+      <option name="block" value="false" />
+    </LanguageOptions>
+  </settings>
+</component>
