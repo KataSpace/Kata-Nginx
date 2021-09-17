@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1793371-fa99-4e0f-ba3c-e7f92ab16e08" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/cli/kn/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/inferface.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/nginx/types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/const.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/engine.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/web.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/web_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/v1/web.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli/kn/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/kn/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/inferface.go" beforeDir="false" afterPath="$PROJECT_DIR$/apis/interface.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +68,14 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/doc/pics" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/services" />
+      <recent name="$PROJECT_DIR$/apis" />
+      <recent name="$PROJECT_DIR$/apis/nginx" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Makefile 目标.kn">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Kata-Nginx" />
       <working_directory value="$PROJECT_DIR$" />
@@ -79,6 +95,68 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
+    <configuration name="github.com/KataSpace/Kata-Nginx/config 中的 TestNewWebConfig" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Kata-Nginx" />
+      <working_directory value="$PROJECT_DIR$/config" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/KataSpace/Kata-Nginx/config" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestNewWebConfig\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="github.com/KataSpace/Kata-Nginx/config 中的 TestNewWebConfig/Parse_config_file_without_debug" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Kata-Nginx" />
+      <working_directory value="$PROJECT_DIR$/config" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/KataSpace/Kata-Nginx/config" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestNewWebConfig\E$/^\QParse_config_file_without_debug\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="github.com/KataSpace/Kata-Nginx/config 中的 TestNewWebConfig/Parse_config_file_without_port" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Kata-Nginx" />
+      <working_directory value="$PROJECT_DIR$/config" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/KataSpace/Kata-Nginx/config" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestNewWebConfig\E$/^\QParse_config_file_without_port\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test github.com/KataSpace/Kata-Nginx/config" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Kata-Nginx" />
+      <working_directory value="$PROJECT_DIR$/config" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/KataSpace/Kata-Nginx/config" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration name="kn" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="kn" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Makefile 目标.kn" />
+        <item itemvalue="Go 测试.go test github.com/KataSpace/Kata-Nginx/config" />
+        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/config 中的 TestNewWebConfig" />
+        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/config 中的 TestNewWebConfig/Parse_config_file_without_port" />
+        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/config 中的 TestNewWebConfig/Parse_config_file_without_debug" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">

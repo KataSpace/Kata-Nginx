@@ -1,5 +1,3 @@
-
-
 // Copyright (c) 2021. The Kata-Nginx Authors.
 //
 // Licensed under the GPL License, Version 3.0 (the "License");
@@ -18,6 +16,26 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+
+	kg "github.com/KataSpace/Kata-Gin"
+	"github.com/KataSpace/Kata-Nginx/config"
+	v1 "github.com/KataSpace/Kata-Nginx/services/v1"
+	"github.com/gin-gonic/gin"
+)
+
 func main() {
 
+	conf, engine, err := config.InitEngine(os.Getenv(config.KataConfigPath))
+	if err != nil {
+		panic(err)
+	}
+	ws := v1.NewWebService(engine)
+
+	r := gin.Default()
+	r = kg.RegisterRouter(r, nil, nil, ws)
+
+	panic(r.Run(fmt.Sprintf(":%d", conf.Port)))
 }
