@@ -19,6 +19,7 @@ package engine
 import (
 	"github.com/KataSpace/Kata-Nginx/apis"
 	"github.com/KataSpace/Kata-Nginx/config"
+	log "github.com/sirupsen/logrus"
 )
 
 func InitEngine(path string) (*apis.Config, apis.Engine, error) {
@@ -27,10 +28,18 @@ func InitEngine(path string) (*apis.Config, apis.Engine, error) {
 		return nil, nil, err
 	}
 
+	if conf.Debug {
+		log.SetLevel(log.DebugLevel)
+	}
+
+	log.Debug("Config Init Success!")
+
 	engine, err := initEngine(conf)
 	return conf, engine, err
 }
 
 func initEngine(conf *apis.Config) (apis.Engine, error) {
-	return CommonEngine{conf: *conf}, nil
+	engine := CommonEngine{conf: *conf}
+	err := engine.EngineInit(*conf)
+	return engine, err
 }

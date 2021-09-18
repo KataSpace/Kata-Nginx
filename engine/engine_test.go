@@ -932,3 +932,38 @@ func Test_ingress2Node(t *testing.T) {
 		})
 	}
 }
+
+func Test_parseNginxCommand(t *testing.T) {
+	type args struct {
+		ps string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "Use specify configure",
+			args: args{ps: "nginx -c /etc/nginx/default.conf -g daemon off;"},
+			want: "nginx -c /etc/nginx/default.conf ",
+		},
+		{
+			name: "Not use specify configure",
+			args: args{ps: "nginx -g daemon off;"},
+			want: "nginx",
+		},
+		{
+			name: "Normal Test",
+			args: args{ps: ` nginx -g daemon off;
+	`},
+			want: "nginx",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := parseNginxCommand(tt.args.ps); got != tt.want {
+				t.Errorf("parseNginxCommand() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

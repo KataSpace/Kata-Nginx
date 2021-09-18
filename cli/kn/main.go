@@ -31,7 +31,7 @@ func main() {
 
 	conf, eg, err := engine.InitEngine(os.Getenv(config.KataConfigPath))
 	if err != nil {
-		panic(err)
+		panic(err.Error())
 	}
 	ws := v1.NewWebService(eg)
 

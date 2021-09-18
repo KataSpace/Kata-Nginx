@@ -37,6 +37,9 @@ type NginxEngine interface {
 
 	// NginxSum  return nginx configure sum
 	NginxSum() (sum string)
+
+	// Reflash return latest node struct
+	Reflash() (node web.Node, err error)
 }
 
 type ParseEngine interface {

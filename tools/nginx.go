@@ -34,20 +34,28 @@ const (
 	commonClose  = "}"
 )
 
-func CheckNginxProcess() (has bool, err error) {
-	cmd := exec.Command("/bin/ps", "-ef", "|", "grep", "nginx", "|", "grep", "master", "|", "grep", "-v", "grep")
+func CheckNginxProcess() (path string, err error) {
+	c := "/bin/ps -ef | grep nginx | grep master| grep -v grep"
+	cmd := exec.Command("/bin/bash", "-c", c)
 	data, err := cmd.Output()
 	if err != nil {
-		return false, errors.WithMessage(err, "Get Nginx Pid")
+		return path, errors.WithMessage(err, "Get Nginx Pid")
 	}
 
 	log.Debugf("CheckNginxProcess: %s", string(data))
 
-	if len(data) > 0 {
-		return true, nil
+	//if len(data) > 0 {
+	//	return path, nil
+	//}
+
+	p := strings.Split(string(data), "master process")
+
+	log.Debugf("Parse Nginx Path: %v", p)
+	if len(p) != 2 {
+		return path, errors.New("Can not get nginx execute path")
 	}
 
-	return false, nil
+	return p[1], nil
 }
 
 // PoistionWithStr find all match string by arch

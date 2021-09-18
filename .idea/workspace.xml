@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1793371-fa99-4e0f-ba3c-e7f92ab16e08" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/apis/web/types.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/engine.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/engine_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/nginx.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/web.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/web_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apis/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/apis/interface.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/nginx/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/apis/nginx/types.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/kn/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/kn/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/engine.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/engine.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/engine.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/engine.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/engine_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/engine_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/init.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/v1/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/v1/web.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/nginx.go" beforeDir="false" afterPath="$PROJECT_DIR$/tools/nginx.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +81,7 @@
       <recent name="$PROJECT_DIR$/apis/nginx" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 TestCommonEngine_FindDomain/Find_all_domains">
+  <component name="RunManager" selected="Makefile 目标.kn-alpine">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="Kata-Nginx" />
       <working_directory value="$PROJECT_DIR$" />
@@ -107,7 +101,7 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 TestCommonEngine_FindDomain" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 Test_parseNginxCommand" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Kata-Nginx" />
       <working_directory value="$PROJECT_DIR$/engine" />
       <root_directory value="$PROJECT_DIR$" />
@@ -116,10 +110,10 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestCommonEngine_FindDomain\E$" />
+      <pattern value="^\QTest_parseNginxCommand\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 TestCommonEngine_FindDomain/Find_all_domains" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 Test_parseNginxCommand/Normal_Test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Kata-Nginx" />
       <working_directory value="$PROJECT_DIR$/engine" />
       <root_directory value="$PROJECT_DIR$" />
@@ -128,10 +122,10 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestCommonEngine_FindDomain\E$/^\QFind_all_domains\E$" />
+      <pattern value="^\QTest_parseNginxCommand\E$/^\QNormal_Test\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 Test_ingress2Node/Normal_Test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test github.com/KataSpace/Kata-Nginx/engine" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Kata-Nginx" />
       <working_directory value="$PROJECT_DIR$/engine" />
       <root_directory value="$PROJECT_DIR$" />
@@ -140,40 +134,27 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTest_ingress2Node\E$/^\QNormal_Test\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 Test_location2Node/Normal_Test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="Kata-Nginx" />
-      <working_directory value="$PROJECT_DIR$/engine" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/KataSpace/Kata-Nginx/engine" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTest_location2Node\E$/^\QNormal_Test\E$" />
+    <configuration name="kn-alpine" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="kn-alpine" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="github.com/KataSpace/Kata-Nginx/engine 中的 Test_server2Node/Normal_Test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="Kata-Nginx" />
-      <working_directory value="$PROJECT_DIR$/engine" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/KataSpace/Kata-Nginx/engine" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTest_server2Node\E$/^\QNormal_Test\E$" />
+    <configuration name="kn" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="kn" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 TestCommonEngine_FindDomain/Find_all_domains" />
-        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 TestCommonEngine_FindDomain" />
-        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 Test_ingress2Node/Normal_Test" />
-        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 Test_server2Node/Normal_Test" />
-        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 Test_location2Node/Normal_Test" />
+        <item itemvalue="Makefile 目标.kn-alpine" />
+        <item itemvalue="Makefile 目标.kn" />
+        <item itemvalue="Go 测试.go test github.com/KataSpace/Kata-Nginx/engine" />
+        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 Test_parseNginxCommand" />
+        <item itemvalue="Go 测试.github.com/KataSpace/Kata-Nginx/engine 中的 Test_parseNginxCommand/Normal_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -189,25 +170,34 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/tools/nginx.go</url>
-          <line>170</line>
+          <line>178</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/tools/nginx.go</url>
-          <line>166</line>
+          <line>174</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/tools/nginx.go</url>
-          <line>155</line>
+          <line>163</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/tools/nginx.go</url>
-          <line>159</line>
+          <line>167</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/engine/engine.go</url>
+          <line>343</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Kata_Nginx$github_com_KataSpace_Kata_Nginx_engine__Test_parseNginxCommand.out" NAME="github.com/KataSpace/Kata-Nginx/engine 中的 Test_parseNginxCommand 覆盖结果" MODIFIED="1631971901160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Kata_Nginx$go_test_github_com_KataSpace_Kata_Nginx_engine.out" NAME="go test github.com/KataSpace/Kata-Nginx/engine 覆盖结果" MODIFIED="1631971942225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

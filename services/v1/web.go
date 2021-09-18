@@ -34,7 +34,14 @@ func (ws *WebService) GetPing(c *gin.Context) {
 
 // PostSync Engine缓存同步接口
 func (ws *WebService) PostSync(c *gin.Context) {
+	
+	node, err := ws.engine.Reflash()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
 
+	c.JSON(http.StatusOK, node)
 }
 
 func NewWebService(engine apis.Engine) *WebService {

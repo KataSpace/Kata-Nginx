@@ -19,6 +19,7 @@ package engine
 import (
 	"bufio"
 	"fmt"
+	"os/exec"
 	"strings"
 
 	"github.com/KataSpace/Kata-Nginx/apis"
@@ -26,11 +27,13 @@ import (
 	"github.com/KataSpace/Kata-Nginx/apis/web"
 	"github.com/KataSpace/Kata-Nginx/tools"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 type CommonEngine struct {
 	conf apis.Config
 	sum  string
+	node web.Node
 }
 
 func (ce CommonEngine) EngineInit(conf apis.Config) (err error) {
@@ -57,14 +60,85 @@ func (ce CommonEngine) EngineInit(conf apis.Config) (err error) {
 
 	ce.sum = s
 
+	ingress, err := ce.FindDomain(data)
+	if err != nil {
+		return errors.WithMessage(err, "Generate Nginx Struct")
+	}
+
+	node, err := ce.GenerateTopology(ingress)
+	if err != nil {
+		return errors.WithMessage(err, "Generate Node Data")
+	}
+
+	ce.node = node
 	return nil
 }
 
-func (ce CommonEngine) GetNginxContent() (string, error) {
-	return "", nil
+func (ce CommonEngine) Reflash() (node web.Node, err error) {
+	data, err := ce.GetNginxContent()
+	if err != nil {
+		return node, errors.WithMessage(err, "GetNginxContent")
+	}
+
+	newSum, err := ce.GetNginxSum(data)
+	if err != nil {
+		return node, errors.WithMessage(err, "GetNginxSum")
+	}
+
+	if ce.conf.Cache {
+		if ce.sum == newSum {
+			return ce.node, nil
+		}
+	}
+
+	ingress, err := ce.FindDomain(data)
+	if err != nil {
+		return node, errors.WithMessage(err, "Generate Nginx Struct")
+	}
+
+	newNode, err := ce.GenerateTopology(ingress)
+	if err != nil {
+		return node, errors.WithMessage(err, "Generate Node Data")
+	}
+
+	ce.node = newNode
+	ce.sum = newSum
+	return ce.node, nil
 }
+func (ce CommonEngine) GetNginxContent() (string, error) {
+
+	nginxPath, err := tools.CheckNginxProcess()
+	if err != nil {
+		return "", err
+	}
+
+	path := parseNginxCommand(nginxPath)
+
+	log.Debugf("Get Nginx Binary: [%s]", path)
+
+	command := strings.Split(path, " ")
+	command = append(command, "-T")
+
+	log.Debugf("GetNginxContent use: [%s]", strings.Join(command, " "))
+	cmd := exec.Command("/bin/sh", "-c", strings.Join(command, " "))
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return string(out), errors.New(string(out))
+	}
+
+	return string(out), nil
+}
+
 func (ce CommonEngine) CheckNginx() (running bool, err error) {
-	return tools.CheckNginxProcess()
+	path, err := tools.CheckNginxProcess()
+	if err != nil {
+		return false, err
+	}
+	if path != "" {
+		return true, nil
+	}
+
+	return false, nil
 }
 
 func (ce CommonEngine) GetNginxSum(data string) (sum string, err error) {
@@ -113,15 +187,22 @@ func (ce CommonEngine) FindDomain(data string) (domains nginx.Ingress, err error
 
 	_domainSnippet := tools.FindServerSnippet(data)
 
-	if len(serverName) != len(_domainSnippet) {
+	if len(serverName) > len(_domainSnippet) {
+		log.Errorf("There has [%d] server and has [%d] snippet", len(serverName), len(_domainSnippet))
+		log.Errorf("server: [%v]", serverName)
 		return domains, errors.New("Server name and server content num not match")
 	}
 
 	var do []nginx.Domain
 	for idx, ds := range _domainSnippet {
-		s, _ := ce.FindServer(ds)
-		s.Server = serverName[idx]
-		do = append(do, s)
+		if idx < len(serverName) {
+			s, _ := ce.FindServer(ds)
+			s.Server = serverName[idx]
+			do = append(do, s)
+			continue
+		}
+
+		break
 	}
 
 	domains.Name = "Ingress"
@@ -251,4 +332,36 @@ func location2Node(l nginx.Location) (node web.Node) {
 	node.Name = l.Path
 	node.Children = n
 	return
+}
+
+// parseNginxCommand get nginx execute binary from ps result.
+// If nginx running via specify configure file, then return with this configure file
+// If nginx running without specify configure file, then only return nginx.
+// e.g.
+// get `nginx` from `nginx -g daemon off;`
+// get `nginx -c /etc/nginx/nginx.conf` from `nginx -c /etc/nginx/nginx.conf`
+func parseNginxCommand(ps string) string {
+	log.Debugf("Parse nginx command: [%s]", ps)
+	result := ""
+	command := strings.Split(strings.TrimSpace(ps), " ")
+
+	if strings.Contains(ps, "-c") {
+		saveOnce := false
+		for _, c := range command {
+			result += c + " "
+
+			switch c {
+			case "-c":
+				saveOnce = true
+			default:
+				if saveOnce {
+					return result
+				}
+			}
+		}
+
+		return result
+	}
+
+	return command[0]
 }

@@ -54,6 +54,7 @@ func NewWebConfig(path string) (cf *apis.Config, err error) {
 	}
 
 	output(cf)
+
 	return cf, nil
 }
 
@@ -68,8 +69,8 @@ func (o funcOption) apply(cf *apis.Config) {
 // defaultWebConfig create a default web config
 func defaultWebConfig() (c *apis.Config) {
 	return &apis.Config{
-		Debug: false,
-		Port:  8000,
+		Debug: true,
+		Port:  10000,
 		Cache: false,
 	}
 }

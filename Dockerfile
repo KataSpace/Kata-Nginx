@@ -1,5 +1,3 @@
-FROM debian:10
-RUN apt-get update && \
-    apt-get install -y procps
+FROM vikings/alpine
 ADD  bin/kn /kn
 ENTRYPOINT ["/kn"]
