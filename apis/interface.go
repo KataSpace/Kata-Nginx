@@ -18,32 +18,39 @@ package apis
 
 import (
 	"github.com/KataSpace/Kata-Nginx/apis/nginx"
+	"github.com/KataSpace/Kata-Nginx/apis/web"
 )
 
 type NginxEngine interface {
 	// CheckNginx check if it has a running nginx instance.
-	// data is full nginx configure
-	CheckNginx(data string) (running bool, err error)
+	CheckNginx() (running bool, err error)
+
+	// GetNginxContent get nginx currently nginx configure content
+	GetNginxContent() (string, error)
 
 	// GetNginxSum get currently nginx configure file sum.
 	// data is full nginx configure
 	GetNginxSum(data string) (sum string, err error)
 
 	// GenerateTopology generate nginx invoke topology data
-	GenerateTopology() (err error)
+	GenerateTopology(domains nginx.Ingress) (node web.Node, err error)
 
 	// NginxSum  return nginx configure sum
-	NginxSum()(sum string)
+	NginxSum() (sum string)
 }
 
 type ParseEngine interface {
 	// FindDomain find all domains in specify nginx configure
-	// data is configure snippet
-	FindDomain(data string) (domains []string, err error)
+	// data is nginx full configure
+	FindDomain(data string) (domains nginx.Ingress, err error)
+
+	// FindServer find all servers info from server snippet
+	// data is server snippet
+	FindServer(data string) (servers nginx.Domain, err error)
 
 	// FindLocation find all locations in specify server snippet.
 	// data is server snippet content
-	FindLocation(data string) (locations []string, err error)
+	FindLocation(data string) (locations []nginx.Location, err error)
 
 	// FindLocationMetaData find location metadata in each location snippet.
 	// data is location snippet content

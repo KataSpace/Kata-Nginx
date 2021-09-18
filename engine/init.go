@@ -14,19 +14,23 @@
 //
 // If you has any question, plz contact me. ztao8607@gmail.com
 
-package config
+package engine
 
-//// InitEngine Get A Available Engine
-//func InitEngine(path string) (*apis.Config, apis.Engine, error) {
-//	conf, err := NewWebConfig(path)
-//	if err != nil {
-//		return nil, nil, err
-//	}
-//
-//	engine, err := initEngine(conf)
-//	return conf, engine, err
-//}
-//
-//func initEngine(conf *apis.Config) (apis.Engine, error) {
-//	return nil, nil
-//}
+import (
+	"github.com/KataSpace/Kata-Nginx/apis"
+	"github.com/KataSpace/Kata-Nginx/config"
+)
+
+func InitEngine(path string) (*apis.Config, apis.Engine, error) {
+	conf, err := config.NewWebConfig(path)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	engine, err := initEngine(conf)
+	return conf, engine, err
+}
+
+func initEngine(conf *apis.Config) (apis.Engine, error) {
+	return CommonEngine{conf: *conf}, nil
+}

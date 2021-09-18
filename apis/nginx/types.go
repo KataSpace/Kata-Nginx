@@ -16,6 +16,21 @@
 
 package nginx
 
+type Ingress struct {
+	Name    string
+	Domains []Domain
+}
+
+type Domain struct {
+	Server    string
+	Locations []Location
+}
+
+type Location struct {
+	Path     string
+	MetaData []LocationMetaData
+}
+
 // LocationMetaData Ingress Metadata For Each Location.
 type LocationMetaData struct {
 	Namespace string

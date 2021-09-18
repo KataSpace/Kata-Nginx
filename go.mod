@@ -6,6 +6,7 @@ require (
 	github.com/BurntSushi/toml v0.4.1
 	github.com/KataSpace/Kata-Gin v0.0.0-20210907113713-b9e3292eb9c6
 	github.com/gin-gonic/gin v1.7.4
+	github.com/golang-collections/collections v0.0.0-20130729185459-604e922904d3
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.8.1
 )

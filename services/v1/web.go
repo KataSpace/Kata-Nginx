@@ -27,8 +27,14 @@ type WebService struct {
 	engine apis.Engine
 }
 
+// GetPing 健康检查接口
 func (ws *WebService) GetPing(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": "running", "nginx check sum": ws.engine.NginxSum()})
+}
+
+// PostSync Engine缓存同步接口
+func (ws *WebService) PostSync(c *gin.Context) {
+
 }
 
 func NewWebService(engine apis.Engine) *WebService {

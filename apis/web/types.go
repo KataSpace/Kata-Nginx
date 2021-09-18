@@ -14,19 +14,10 @@
 //
 // If you has any question, plz contact me. ztao8607@gmail.com
 
-package config
+package web
 
-//// InitEngine Get A Available Engine
-//func InitEngine(path string) (*apis.Config, apis.Engine, error) {
-//	conf, err := NewWebConfig(path)
-//	if err != nil {
-//		return nil, nil, err
-//	}
-//
-//	engine, err := initEngine(conf)
-//	return conf, engine, err
-//}
-//
-//func initEngine(conf *apis.Config) (apis.Engine, error) {
-//	return nil, nil
-//}
+// Node Client use this data for render UI
+type Node struct {
+	Name     string `json:"name"`
+	Children []Node `json:"children"`
+}

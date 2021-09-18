@@ -22,17 +22,18 @@ import (
 
 	kg "github.com/KataSpace/Kata-Gin"
 	"github.com/KataSpace/Kata-Nginx/config"
+	"github.com/KataSpace/Kata-Nginx/engine"
 	v1 "github.com/KataSpace/Kata-Nginx/services/v1"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 
-	conf, engine, err := config.InitEngine(os.Getenv(config.KataConfigPath))
+	conf, eg, err := engine.InitEngine(os.Getenv(config.KataConfigPath))
 	if err != nil {
 		panic(err)
 	}
-	ws := v1.NewWebService(engine)
+	ws := v1.NewWebService(eg)
 
 	r := gin.Default()
 	r = kg.RegisterRouter(r, nil, nil, ws)
