@@ -17,9 +17,11 @@
 package v1
 
 import (
+	"html/template"
 	"net/http"
 
 	"github.com/KataSpace/Kata-Nginx/apis"
+	"github.com/KataSpace/Kata-Nginx/services/v1/tmpl"
 	"github.com/gin-gonic/gin"
 )
 
@@ -34,7 +36,7 @@ func (ws *WebService) GetPing(c *gin.Context) {
 
 // PostSync Engine缓存同步接口
 func (ws *WebService) PostSync(c *gin.Context) {
-	
+
 	node, err := ws.engine.Reflash()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -44,6 +46,22 @@ func (ws *WebService) PostSync(c *gin.Context) {
 	c.JSON(http.StatusOK, node)
 }
 
+func (ws *WebService) GetWeb(c *gin.Context) {
+	node, err := ws.engine.Reflash()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	d, _ := template.New("d3").Parse(tmpl.D3)
+
+	type data struct {
+		Node interface{}
+	}
+
+	d.Execute(c.Writer, data{Node: node})
+
+}
 func NewWebService(engine apis.Engine) *WebService {
 	return &WebService{engine: engine}
 }
