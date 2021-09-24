@@ -40,7 +40,7 @@ var D3 =`<!--
 <head>
     <meta charset="utf-8">
 
-    <title>Tree Example</title>
+    <title>Ingress Topology</title>
 
     <style>
         .node {
@@ -211,7 +211,11 @@ var D3 =`<!--
     }
 
 </script>
-
+<br>***************************************************</br>
+    <pre>
+		{{.Original}}
+    </pre>
+<br>***************************************************</br>
 </body>
 
 </html>`

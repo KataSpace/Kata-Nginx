@@ -74,36 +74,36 @@ func (ce CommonEngine) EngineInit(conf apis.Config) (err error) {
 	return nil
 }
 
-func (ce CommonEngine) Reflash() (node web.Node, err error) {
+func (ce CommonEngine) Reflash() (node web.Node, original string, err error) {
 	data, err := ce.GetNginxContent()
 	if err != nil {
-		return node, errors.WithMessage(err, "GetNginxContent")
+		return node, original, errors.WithMessage(err, "GetNginxContent")
 	}
 
 	newSum, err := ce.GetNginxSum(data)
 	if err != nil {
-		return node, errors.WithMessage(err, "GetNginxSum")
+		return node, original, errors.WithMessage(err, "GetNginxSum")
 	}
 
 	if ce.conf.Cache {
 		if ce.sum == newSum {
-			return ce.node, nil
+			return ce.node, original, nil
 		}
 	}
 
 	ingress, err := ce.FindDomain(data)
 	if err != nil {
-		return node, errors.WithMessage(err, "Generate Nginx Struct")
+		return node, original, errors.WithMessage(err, "Generate Nginx Struct")
 	}
 
 	newNode, err := ce.GenerateTopology(ingress)
 	if err != nil {
-		return node, errors.WithMessage(err, "Generate Node Data")
+		return node, original, errors.WithMessage(err, "Generate Node Data")
 	}
 
 	ce.node = newNode
 	ce.sum = newSum
-	return ce.node, nil
+	return ce.node, data, nil
 }
 func (ce CommonEngine) GetNginxContent() (string, error) {
 

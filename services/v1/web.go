@@ -19,6 +19,7 @@ package v1
 import (
 	"html/template"
 	"net/http"
+	"strconv"
 
 	"github.com/KataSpace/Kata-Nginx/apis"
 	"github.com/KataSpace/Kata-Nginx/services/v1/tmpl"
@@ -37,7 +38,7 @@ func (ws *WebService) GetPing(c *gin.Context) {
 // PostSync Engine缓存同步接口
 func (ws *WebService) PostSync(c *gin.Context) {
 
-	node, err := ws.engine.Reflash()
+	node, _, err := ws.engine.Reflash()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -47,7 +48,9 @@ func (ws *WebService) PostSync(c *gin.Context) {
 }
 
 func (ws *WebService) GetWeb(c *gin.Context) {
-	node, err := ws.engine.Reflash()
+	needOriginal, _ := strconv.ParseBool(c.Query("original"))
+
+	node, original, err := ws.engine.Reflash()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -56,11 +59,16 @@ func (ws *WebService) GetWeb(c *gin.Context) {
 	d, _ := template.New("d3").Parse(tmpl.D3)
 
 	type data struct {
-		Node interface{}
+		Node     interface{}
+		Original string
 	}
 
-	d.Execute(c.Writer, data{Node: node})
+	if needOriginal {
+		d.Execute(c.Writer, data{Node: node, Original: original})
+		return
+	}
 
+	d.Execute(c.Writer, data{Node: node, Original: ""})
 }
 func NewWebService(engine apis.Engine) *WebService {
 	return &WebService{engine: engine}
