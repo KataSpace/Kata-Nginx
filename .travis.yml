@@ -12,7 +12,7 @@ services:
   - docker
 
 before_install:
-  - echo "DOCKER_HUB" | docker login -u "$DOCKERUSER" --password-stdin
+  - echo "$DOCKER_HUB" | docker login -u "$DOCKERUSER" --password-stdin
 
 install:
   - docker run -it --rm -v ${PWD}:/go/src/github.com/KataSpace/Kata-Nginx -w /go/src/github.com/KataSpace/Kata-Nginx --entrypoint go golang:alpine3.14 build -o bin/kn cli/kn/main.go

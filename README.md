@@ -1,5 +1,7 @@
 # Kata-Nginx
-A tool for observe Nginx topology in Kubernetes
+[![Build Status](https://app.travis-ci.com/KataSpace/Kata-Nginx.svg?branch=main)](https://app.travis-ci.com/KataSpace/Kata-Nginx)
+
+A tool for observe Nginx topology in Kubernetes 
 
 # How is KN Design?
 
