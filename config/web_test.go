@@ -78,7 +78,7 @@ func TestNewWebConfig(t *testing.T) {
 			args: args{path: ""},
 			wantCf: &apis.Config{
 				Debug: false,
-				Port:  8000,
+				Port:  10000,
 				Cache: false,
 			},
 			wantErr: false,
@@ -108,7 +108,7 @@ func TestNewWebConfig(t *testing.T) {
 			args: args{path: "/tmp/c3.toml"},
 			wantCf: &apis.Config{
 				Debug: true,
-				Port:  8000,
+				Port:  10000,
 				Cache: true,
 			},
 			wantErr: false,

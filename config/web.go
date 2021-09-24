@@ -69,7 +69,7 @@ func (o funcOption) apply(cf *apis.Config) {
 // defaultWebConfig create a default web config
 func defaultWebConfig() (c *apis.Config) {
 	return &apis.Config{
-		Debug: true,
+		Debug: false,
 		Port:  10000,
 		Cache: false,
 	}
